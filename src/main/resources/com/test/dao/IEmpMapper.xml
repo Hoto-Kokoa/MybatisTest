@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.dao.IEmpMapper">
+
+
+    <resultMap id="EmpResultMap" type="com.test.domain.Emp">
+        <id column="id" property="id"/>
+        <result column="job_id" property="jobId"/>
+        <result column="dept_id" property="deptId"/>
+        <result column="dept_name" property="deptName"/>
+        <result column="name" property="name"/>
+        <result column="gender" property="gender"/>
+        <result column="salary" property="salary"/>
+        <result column="bonus" property="bonus"/>
+        <result column="join_date" property="joinDate"/>
+        <result column="mgr" property="mgr"/>
+    </resultMap>
+
+
+    <select id="findEmpByDeptId" resultMap="EmpResultMap">
+        select *,#{deptName} as dept_name from emp
+        where dept_id = #{deptId}
+    </select>
+
+</mapper>
